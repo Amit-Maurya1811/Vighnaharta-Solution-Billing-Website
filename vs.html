@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing System</title>
+  <link rel="stylesheet" href="vs.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Invoice Form</h1>
+    <form id="invoiceForm">
+      <!-- Company Details -->
+      <div class="company-info">
+        <label for="billNumber">Bill Number</label>
+        <input type="text" id="billNumber" required>
+
+        <label for="date">Date</label>
+        <input type="text" id="date" required>
+
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" required>
+
+        <label for="gstNumber">GST Number</label>
+        <input type="text" id="gstNumber" required>
+
+        <label for="address">Address</label>
+        <textarea id="address" required></textarea>
+
+        <label for="stateCode">West Bengal State Code</label>
+        <input type="text" id="stateCode" value="19" readonly>
+      </div>
+
+      <table class="goods-table">
+        <thead>
+          <tr>
+            <th>Sl No.</th>
+            <th>Description of Goods</th>
+            <th>SAC Code</th>
+            <th>Qty.</th>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Action</th> <!-- New column for delete button -->
+          </tr>
+        </thead>
+        <tbody id="goodsSection">
+          <tr class="good-item">
+            <td>1</td>
+            <td><input type="text" class="description" required></td>
+            <td><input type="text" class="sacCode" required></td>
+            <td><input type="number" class="quantity" required></td>
+            <td><input type="number" class="rate" required></td>
+            <td><input type="number" class="amount" readonly></td>
+            <td><button type="button" class="delete-btn">×</button></td> <!-- Cross button -->
+          </tr>
+        </tbody>
+      </table>
+
+    <!-- Buttons section: Add More and Calculate GST -->
+    <div class="button-section">
+        
+            <button type="button" id="addMore" class="circular-btn">Add More</button>
+            <button type="button" id="calculateGST" class="circular-btn">Calculate GST</button>
+           
+    </div>
+
+      <!-- GST and Total Section -->
+      <div class="gst-section">
+        <h2>GST Calculations</h2>
+        <label for="totalAmount">Total Amount</label>
+        <input type="number" id="totalAmount" readonly>
+
+        <label for="cgst">CGST (9%)</label>
+        <input type="number" id="cgst" readonly>
+
+        <label for="sgst">SGST (9%)</label>
+        <input type="number" id="sgst" readonly>
+
+        <label for="grandTotal">Grand Total</label>
+        <input type="number" id="grandTotal" readonly>
+
+        <label for="amountInWords">Amount in Words</label>
+        <input type="text" id="amountInWords" readonly>
+      </div>
+
+      <button type="button" id="generatePDF" class="submit-btn">Generate PDF</button>
+    </form>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+    <script src="vs.js"></script>
+</body>
+</html>
